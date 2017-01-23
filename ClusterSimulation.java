@@ -63,8 +63,6 @@ public class ClusterSimulation {
 	}
 	
 	public double averageQueueTime(){
-		System.out.println(totalTimeWaited);
-		System.out.println(totalCars);
 		return totalTimeWaited/totalCars;
 	}
 }

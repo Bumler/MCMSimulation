@@ -18,7 +18,6 @@ public class TollQueue {
 	private void setQueueTime(boolean isCar){
 		if(isCar){
 			queueTime = 3.086;
-			//queueTime = 5;
 		}
 		else{
 			queueTime = 6.3245;

@@ -3,9 +3,7 @@ import java.util.LinkedList;
 public class TollQueue {
 	LinkedList<TollBooth> q = new LinkedList<>();
 	
-	double timeIncrement;
-	double queueTime;
-	double waitTime;
+	double timeIncrement, queueTime, waitTime;
 	boolean waiting = false;
 	
 	public TollQueue(double time, boolean isCar){
@@ -16,12 +14,8 @@ public class TollQueue {
 	//based on if the queue is for cars or trucks we will use our calculated wait times
 	//to determine how frequently cars should be released from the queue
 	private void setQueueTime(boolean isCar){
-		if(isCar){
-			queueTime = 3.086;
-		}
-		else{
-			queueTime = 6.3245;
-		}
+		if (isCar)	{queueTime = 3.086;}
+		else		{queueTime = 6.3245;}
 	}
 	
 	public void addToQueue(TollBooth t){
@@ -29,13 +23,8 @@ public class TollQueue {
 	}
 	
 	public boolean isEmpty(){
-		if (q.peek() == null){
-			return true;
-		}
-		
-		else {
-			return false;
-		}
+		if (q.peek() == null)	{return true;}	
+		else 			{return false;}
 	}
 	
 	private void waitTollBooth(){
@@ -55,17 +44,14 @@ public class TollQueue {
 				TollBooth temp = q.remove();
 				waitTollBooth();
 				return temp;
-			}
-		}
+			}}
 		else{
 			waitTollBooth();
 			waitTime -= timeIncrement;
 			
 			if (waitTime <= 0){
 				waiting = false;
-			}
-		}
-		
+			}}
 		return null;
 	}
 }

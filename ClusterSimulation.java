@@ -1,14 +1,12 @@
 import java.util.ArrayList;
 
 public class ClusterSimulation {
-	double timeIncrement;
-	
+	double timeIncrement;	
+	double totalTimeWaited = 0;
 	int totalCars, cars;
 	
 	TollQueue tq;
 	ArrayList<TollBooth> inService;
-	
-	double totalTimeWaited = 0;
 	
 	public ClusterSimulation (int B, int totalCars, double time, boolean isCar){
 		this.timeIncrement = time;
@@ -40,14 +38,13 @@ public class ClusterSimulation {
 	
 	private void timePasses(){
 		for (int i = 0; i < inService.size(); i++){
-			//if after time passes the toll booths wait time is <= 0 it should be taken out of service and placed onto the queue
+		//if after time passes the toll booths wait time is <= 0 it should be taken out of service and placed onto the queue
 			if (inService.get(i).timePasses() == true){
 				tq.addToQueue(inService.get(i));
 				inService.remove(i);
 				i--;
 				System.out.println("Placed on queue");
-		}}
-		
+		}}		
 		TollBooth temp = tq.timePasses();
 		
 		if (temp != null){
